@@ -7,7 +7,8 @@ import type { BondInput, BondCalculationResult } from '../types/bond.types';
  * Easy to modify base URL or add auth headers.
  */
 
-const API_BASE_URL = 'http://localhost:3001';
+// Use environment variable for production, fallback to localhost for dev
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
 /**
  * Calculate bond yields and cash flow schedule
