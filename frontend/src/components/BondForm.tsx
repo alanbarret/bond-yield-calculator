@@ -30,6 +30,30 @@ export function BondForm({
     onSubmit();
   };
 
+  /**
+   * Handle number input changes properly
+   * - Empty string stays empty (shows placeholder)
+   * - Parses valid numbers without leading zeros
+   */
+  const handleNumberChange = (field: keyof BondInput, e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    if (value === '') {
+      onInputChange(field, 0 as never);
+    } else {
+      const parsed = parseFloat(value);
+      if (!isNaN(parsed)) {
+        onInputChange(field, parsed as never);
+      }
+    }
+  };
+
+  /**
+   * Display value - show empty string for 0 to allow clean typing
+   */
+  const displayValue = (value: number): string | number => {
+    return value === 0 ? '' : value;
+  };
+
   return (
     <form onSubmit={handleSubmit} className="bond-form">
       <h2>Bond Parameters</h2>
@@ -45,8 +69,9 @@ export function BondForm({
           type="number"
           min="0"
           step="100"
-          value={input.faceValue}
-          onChange={(e) => onInputChange('faceValue', Number(e.target.value))}
+          value={displayValue(input.faceValue)}
+          onChange={(e) => handleNumberChange('faceValue', e)}
+          placeholder="e.g. 1000"
           required
         />
       </div>
@@ -63,8 +88,9 @@ export function BondForm({
           min="0"
           max="100"
           step="0.1"
-          value={input.annualCouponRate}
-          onChange={(e) => onInputChange('annualCouponRate', Number(e.target.value))}
+          value={displayValue(input.annualCouponRate)}
+          onChange={(e) => handleNumberChange('annualCouponRate', e)}
+          placeholder="e.g. 5"
           required
         />
       </div>
@@ -80,8 +106,9 @@ export function BondForm({
           type="number"
           min="0"
           step="1"
-          value={input.marketPrice}
-          onChange={(e) => onInputChange('marketPrice', Number(e.target.value))}
+          value={displayValue(input.marketPrice)}
+          onChange={(e) => handleNumberChange('marketPrice', e)}
+          placeholder="e.g. 950"
           required
         />
       </div>
@@ -98,8 +125,9 @@ export function BondForm({
           min="1"
           max="100"
           step="1"
-          value={input.yearsToMaturity}
-          onChange={(e) => onInputChange('yearsToMaturity', Number(e.target.value))}
+          value={displayValue(input.yearsToMaturity)}
+          onChange={(e) => handleNumberChange('yearsToMaturity', e)}
+          placeholder="e.g. 10"
           required
         />
       </div>
