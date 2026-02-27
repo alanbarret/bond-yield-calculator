@@ -431,7 +431,7 @@ body {
   max-width: 300px;
 }
 
-/* Responsive */
+/* Responsive - Tablet */
 @media (max-width: 900px) {
   .app-main {
     grid-template-columns: 1fr;
@@ -439,5 +439,143 @@ body {
   
   .bond-form {
     position: static;
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 600px) {
+  :root {
+    --spacing-xl: 1rem;
+    --spacing-lg: 1rem;
+  }
+
+  .app-header {
+    padding: var(--spacing-lg);
+  }
+
+  .app-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .app-main {
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+  }
+
+  .bond-form {
+    padding: var(--spacing-lg);
+  }
+
+  .bond-form h2 {
+    font-size: 1.1rem;
+  }
+
+  .form-group {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 0.875rem;
+    font-size: 16px; /* Prevents iOS zoom on focus */
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  /* Results */
+  .results-display {
+    padding: var(--spacing-lg);
+  }
+
+  .results-display h2 {
+    font-size: 1.1rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .metric-card {
+    padding: var(--spacing-md);
+  }
+
+  .metric-value {
+    font-size: 1.5rem;
+  }
+
+  .metric-card h3 {
+    font-size: 0.75rem;
+  }
+
+  .metric-description {
+    font-size: 0.8rem;
+  }
+
+  /* Cash Flow Table */
+  .cash-flow-table-container {
+    padding: var(--spacing-md);
+  }
+
+  .cash-flow-table-container h2 {
+    font-size: 1.1rem;
+  }
+
+  .table-description {
+    font-size: 0.85rem;
+  }
+
+  .cash-flow-table {
+    font-size: 0.8rem;
+  }
+
+  .cash-flow-table th,
+  .cash-flow-table td {
+    padding: 0.5rem 0.4rem;
+    white-space: nowrap;
+  }
+
+  .table-summary {
+    font-size: 0.85rem;
+  }
+
+  /* Empty/Loading States */
+  .empty-state {
+    padding: var(--spacing-xl);
+  }
+
+  .empty-icon {
+    font-size: 2rem;
+  }
+
+  .empty-state h3 {
+    font-size: 1rem;
+  }
+
+  .empty-state p {
+    font-size: 0.9rem;
+  }
+
+  .error-message {
+    flex-direction: column;
+    text-align: center;
+    padding: var(--spacing-md);
+  }
+
+  .app-footer {
+    font-size: 0.85rem;
+    padding: var(--spacing-md);
   }
 }
